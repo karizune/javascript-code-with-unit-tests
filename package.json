@@ -8,7 +8,25 @@
     "jest": "^27.5.1"
   },
   "scripts": {
-    "test": "jest",
-    "init" : "nodemon src/index.js"
-  }
+    "startAlone": "node src/index.js",
+    "testes": "jest",
+    "start": "nodemon src/index.js"
+  },
+  "name": "projeto-javascript-com-teste",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karizune/javascript-code-with-unit-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karizune/javascript-code-with-unit-tests/issues"
+  },
+  "homepage": "https://github.com/karizune/javascript-code-with-unit-tests#readme"
 }
