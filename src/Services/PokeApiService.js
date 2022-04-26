@@ -46,15 +46,11 @@ exports.GetBerryByName = async (name) => {
 exports.GetQtdeEvolucao = async (name) => {
     name = name.toLowerCase();
     let Quantidade = 0;
-    // descobrir quantidade de evolução do pokemon squirtle
+    
     await this.GetPokemonForms(name).then(async res => {
         let formas = await res;
-
-        // achar a posição do squirtle e saber quantas evoluções tem
         for(let index = 0; index < formas.length; index++){
-            // verificar se o objeto atual tem nome de squirtle
             if(formas[index]['name'] == name){
-                //recebendo a quantidade de evoluções 
                 Quantidade = formas.length - (index + 1);
                 break;
             }
