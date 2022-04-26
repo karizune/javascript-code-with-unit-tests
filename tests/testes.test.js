@@ -29,7 +29,6 @@ test("Esperar que a altura do pikachu seja 4", async ()=> {
     });
 });
 
-// verificar se a terceira forma do charmander é um charizard 
 test("Esperar que a terceira forma do charmander seja um charizard", async ()=> {
     await PokeApiService.GetPokemonForms("charmander").then(async res => {
         let formas = await res;
@@ -43,12 +42,3 @@ test("Esperar se que o squirtle tenha 2 evolução", async ()=> {
         expect(formas).toBe(2);
     });
 });
-
-
-/*
-formas
-x = TamanhoArray
-
-evoluções
-x = TamanhoArray - PosiçãoAtual
-*/
