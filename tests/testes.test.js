@@ -3,7 +3,6 @@ const PokeApiService = require("../src/Services/PokeApiService.js");
 var timeout = 5 * 60000; // 5 minutos de timeout pq internet ta foda viu
 jest.setTimeout(timeout);
 
-/*
 test("Espera-se que tenha 1000+ pokemons", async () => {
     let Pokemons = await PokeApiService.GetAllPokemons();
     expect(Pokemons['results'].length).toBeGreaterThanOrEqual(1000);
@@ -49,11 +48,6 @@ test("Espera-se que o squirtle tenha 2 evoluções", async () => {
     let qtde = await PokeApiService.GetQtdeEvolucao("squirtle");
     expect(qtde).toBe(2);
 });
-*/
-
-
-
-
 
 // mock area
 
