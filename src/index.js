@@ -10,12 +10,14 @@ app.listen(process.env.PORT || 3333, () => {
     console.log("server running");
 });
 
+async function MetodoPrincipal(){
+    await PokeApiService.GetQtdeEvolucao("squirtle").then(async res => {
+        console.log(await res);
+    })
+};
 
-async function fazAlgumaCoisa(){
-    await PokeApiService.GetPokemonByName("pikachu").then(async res => {
-        console.log(await res.json());
-    });
-}
+MetodoPrincipal();
 
-
-fazAlgumaCoisa();
+// TamanhoArray = array.length
+// PosiçãoAtual = index + 1
+// x = TamanhoArray - PosiçãoAtual

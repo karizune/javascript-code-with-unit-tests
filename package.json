@@ -8,7 +8,7 @@
     "jest": "^27.5.1"
   },
   "scripts": {
-    "startAlone": "node src/index.js",
+    "go": "node src/index.js",
     "testes": "jest",
     "start": "nodemon src/index.js"
   },
