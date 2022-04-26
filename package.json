@@ -10,7 +10,8 @@
   "scripts": {
     "go": "node src/index.js",
     "testes": "jest",
-    "start": "nodemon src/index.js"
+    "start": "nodemon src/index.js",
+    "covertest":"jest --coverage"
   },
   "name": "projeto-javascript-com-teste",
   "description": "",

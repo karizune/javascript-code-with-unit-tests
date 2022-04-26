@@ -1,17 +1,22 @@
 const { type } = require("express/lib/response");
 const fetch = require("node-fetch");
 const baseUrl = "https://pokeapi.co/api/v2/";
+const max = Number.MAX_SAFE_INTEGER;
 
-exports.GetPokemonByName = async (name) => {        
-    let url = baseUrl + `pokemon/${name.toLowerCase()}`;
-    return await fetch(url);
+exports.GetPokemonByName = async (name) => {      
+    let url = baseUrl + `pokemon/${name}`;
+    let pokemon = (await fetch(url)).json();
+
+    return pokemon;
 };
 
 exports.GetPokemonForms = async (name) => {
-    let url = baseUrl + `pokemon-species/${name.toLowerCase()}`
-    let response = await fetch(url).then(async res => await res.json());
+    let url = baseUrl + `pokemon-species/${name}`;
+    let response = await (await fetch(url)).json();
+    
     url = response['evolution_chain']['url'];
-    response = await fetch(url).then(async res => await res.json());
+    response = await (await fetch(url)).json();
+
     let evolucoes = [];
     let aux = response['chain'];
 
@@ -24,38 +29,46 @@ exports.GetPokemonForms = async (name) => {
 };
 
 exports.GetAllPokemons = async () => {
-    let url = baseUrl + `pokemon?limit=1000000&offset=0`;
-    return await fetch(url);
+    let url = baseUrl + `pokemon?limit=${max}&offset=0`;
+    let pokemons = (await fetch(url)).json();
+
+    return pokemons;
 };
 
 exports.GetManyPokemonsByQtde = async (qtde) => {
     let url = baseUrl + `pokemon?limit=${qtde}&offset=0`;
-    return await fetch(url);
+    let pokemons = (await fetch(url)).json(); 
+
+    return pokemons;
 };
 
 exports.GetManyByType = async (type) => {
-    let url = baseUrl + `type/${type.toLowerCase()}`;
-    return await fetch(url);
+    let url = baseUrl + `type/${type}`;
+    let pokemons = (await fetch(url)).json();
+
+    return pokemons;
 };
 
 exports.GetBerryByName = async (name) => {
-    let url = baseUrl + `berry/${name.toLowerCase()}`;
-    return await fetch(url);
+    let url = baseUrl + `berry/${name}`;
+    let berries = (await fetch(url)).json(); 
+
+    return berries;
 }
 
 exports.GetQtdeEvolucao = async (name) => {
-    name = name.toLowerCase();
+    let formas;
     let Quantidade = 0;
+    name = name;
     
-    await this.GetPokemonForms(name).then(async res => {
-        let formas = await res;
-        for(let index = 0; index < formas.length; index++){
-            if(formas[index]['name'] == name){
-                Quantidade = formas.length - (index + 1);
-                break;
-            }
+    await this.GetPokemonForms(name).then(res => formas = res);
+
+    for(let index = 0; index < formas.length; index++){
+        if(formas[index]['name'] == name){
+            Quantidade = formas.length - (index + 1);
+            break;
         }
-    });
+    }
 
     return Quantidade;
 } 
