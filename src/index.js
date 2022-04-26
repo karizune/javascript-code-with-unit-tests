@@ -17,7 +17,3 @@ async function MetodoPrincipal(){
 };
 
 MetodoPrincipal();
-
-// TamanhoArray = array.length
-// PosiçãoAtual = index + 1
-// x = TamanhoArray - PosiçãoAtual
